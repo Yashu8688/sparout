@@ -1,0 +1,535 @@
+.sparout-on-page {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #0a0a0b;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Header & Progress */
+.sparout-on-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 60px;
+  background: rgba(10, 10, 11, 0.9);
+  backdrop-filter: blur(20px);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.sparout-on-progress-container {
+  width: 100%;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.05);
+  position: absolute;
+  top: 0;
+}
+
+.sparout-on-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #ff4a17, #ff9d00);
+  transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 0 15px rgba(255, 74, 23, 0.4);
+}
+
+.sparout-on-step-indicator {
+  font-size: 12px;
+  font-weight: 700;
+  color: #ff4a17;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* Container */
+.sparout-on-container {
+  width: 100%;
+  max-width: 500px;
+  padding: 100px 24px 60px;
+  box-sizing: border-box;
+}
+
+.sparout-on-animate {
+  animation: sparoutFadeInSlide 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes sparoutFadeInSlide {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.sparout-on-title-section {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.sparout-on-title {
+  font-size: 32px;
+  font-weight: 800;
+  margin-bottom: 8px;
+  background: linear-gradient(135deg, #ffffff 0%, #a1a1a1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.sparout-on-subtitle {
+  color: #71717a;
+  font-size: 16px;
+}
+
+/* Form Layout */
+.sparout-on-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.sparout-on-row {
+  display: flex;
+  gap: 16px;
+  width: 100%;
+}
+
+.sparout-on-row > .sparout-on-input-group {
+  flex: 1;
+}
+
+.sparout-on-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: left;
+}
+
+.sparout-on-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #71717a;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-left: 2px;
+}
+
+.sparout-on-input,
+.sparout-on-custom-select {
+  width: 100%;
+  padding: 14px 16px;
+  background: #161618;
+  border: 1.5px solid #27272a;
+  border-radius: 12px;
+  color: #fff;
+  font-size: 16px;
+  outline: none;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+/* Custom Select Styling */
+.sparout-on-custom-select {
+  position: relative;
+  cursor: pointer;
+  padding: 0; /* Let trigger handle padding */
+  user-select: none;
+}
+
+.sparout-on-select-trigger {
+  padding: 14px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sparout-on-custom-select.open {
+  border-color: #ff4a17;
+  background: #1c1c1f;
+  box-shadow: 0 0 0 4px rgba(255, 74, 23, 0.1);
+}
+
+.sparout-on-custom-select svg {
+  transition: transform 0.3s ease;
+  color: #71717a;
+}
+
+.sparout-on-custom-select.open svg {
+  transform: rotate(180deg);
+  color: #ff4a17;
+}
+
+.sparout-on-options {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  width: 100%;
+  background: #1c1c1f;
+  border: 1px solid #27272a;
+  border-radius: 12px;
+  overflow: hidden;
+  z-index: 100;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+  animation: sparoutDropdownIn 0.2s ease-out;
+}
+
+@keyframes sparoutDropdownIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.sparout-on-option {
+  padding: 14px 16px;
+  color: #a1a1aa;
+  transition: all 0.2s;
+}
+
+.sparout-on-option:hover {
+  background: rgba(255, 74, 23, 0.1);
+  color: #fff;
+}
+
+.sparout-on-option:active {
+  background: #ff4a17;
+  color: #fff;
+}
+
+/* Date Picker Icon Styling */
+.sparout-on-input::-webkit-calendar-picker-indicator {
+  filter: invert(1) brightness(0.8);
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+}
+
+.sparout-on-input::-webkit-calendar-picker-indicator:hover {
+  filter: invert(1) brightness(1);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Custom Select Arrow */
+.sparout-on-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%2371717a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  background-size: 16px;
+  cursor: pointer;
+}
+
+.sparout-on-select:focus {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23ff4a17' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+}
+
+.sparout-on-select option {
+  background: #161618;
+  color: #fff;
+  padding: 10px;
+}
+
+.sparout-on-input-age {
+  background: #111112;
+  color: #71717a;
+  cursor: not-allowed;
+}
+
+.sparout-on-input:focus,
+.sparout-on-select:focus {
+  border-color: #ff4a17;
+  box-shadow: 0 0 0 4px rgba(255, 74, 23, 0.1);
+}
+
+/* Game Selection Step 2 */
+.sparout-on-games-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+}
+
+.sparout-on-game-pill {
+  padding: 12px 24px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  font-weight: 600;
+  color: #a1a1aa;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  backdrop-filter: blur(10px);
+}
+
+.sparout-on-game-pill:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+.sparout-on-pill-active {
+  background: rgba(255, 74, 23, 0.1);
+  border-color: #ff4a17 !important;
+  color: #ff4a17 !important;
+  box-shadow: 0 8px 20px rgba(255, 74, 23, 0.15);
+}
+
+/* Step 3 Physical Stats */
+.sparout-on-physical-layout {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  margin-bottom: 32px;
+  background: rgba(255, 255, 255, 0.02);
+  padding: 30px;
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.sparout-on-silhouette-container {
+  flex: 1;
+  max-width: 140px;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.sparout-on-silhouette {
+  width: 100%;
+  height: auto;
+  max-height: 280px;
+  filter: drop-shadow(0 0 15px rgba(255, 74, 23, 0.2));
+  z-index: 1;
+}
+
+.sparout-on-scan-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #ff4a17, transparent);
+  box-shadow: 0 0 10px #ff4a17;
+  animation: sparoutScan 3s linear infinite;
+  z-index: 2;
+  opacity: 0.5;
+}
+
+@keyframes sparoutScan {
+  0% { top: 0; }
+  100% { top: 100%; }
+}
+
+.sparout-on-physical-inputs {
+  flex: 1.5;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Buttons */
+.sparout-on-btn-group {
+  display: flex;
+  gap: 16px;
+  margin-top: 24px;
+  width: 100%;
+}
+
+.sparout-on-back-btn {
+  flex: 1;
+  padding: 18px;
+  background: #1a1a1c;
+  border: 1.5px solid #27272a;
+  color: #a1a1aa;
+  border-radius: 16px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.sparout-on-back-btn:hover {
+  background: #27272a;
+  color: #fff;
+  border-color: #3f3f46;
+}
+
+.sparout-on-next-btn,
+.sparout-on-finish-btn {
+  flex: 2.5;
+  padding: 18px;
+  background: linear-gradient(135deg, #ff4a17 0%, #e03e12 100%);
+  color: #fff;
+  border: none;
+  border-radius: 16px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 8px 30px rgba(255, 74, 23, 0.25);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.sparout-on-next-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  filter: grayscale(1);
+  box-shadow: none;
+}
+
+.sparout-on-next-btn:hover:not(:disabled),
+.sparout-on-finish-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 40px rgba(255, 74, 23, 0.4);
+  filter: brightness(1.1);
+}
+
+.sparout-on-finish-btn:active {
+  transform: translateY(0);
+}
+
+/* Step 4 Goals */
+.sparout-on-goals-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.sparout-on-goal-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-align: center;
+  backdrop-filter: blur(10px);
+}
+
+.sparout-on-goal-card:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-5px);
+}
+
+.sparout-on-goal-active {
+  background: rgba(255, 74, 23, 0.05);
+  border-color: #ff4a17;
+  box-shadow: 0 10px 25px rgba(255, 74, 23, 0.15);
+}
+
+.sparout-on-goal-checkbox {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s;
+}
+
+.sparout-on-goal-active .sparout-on-goal-checkbox {
+  background: #ff4a17;
+  border-color: #ff4a17;
+  color: #fff;
+}
+
+.sparout-on-goal-text {
+  font-size: 14px;
+  font-weight: 700;
+  color: #a1a1aa;
+  line-height: 1.4;
+}
+
+.sparout-on-goal-active .sparout-on-goal-text {
+  color: #fff;
+}
+
+/* Step 5 Modes */
+.sparout-on-modes-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sparout-on-mode-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(10px);
+}
+
+.sparout-on-mode-card:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: scale(1.02);
+}
+
+.sparout-on-mode-active {
+  background: rgba(255, 74, 23, 0.05);
+  border-color: #ff4a17;
+  box-shadow: 0 12px 30px rgba(255, 74, 23, 0.15);
+}
+
+.sparout-on-mode-icon-wrapper {
+  width: 56px;
+  height: 56px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #a1a1aa;
+  transition: all 0.3s;
+}
+
+.sparout-on-mode-active .sparout-on-mode-icon-wrapper {
+  background: #ff4a17;
+  color: #fff;
+}
+
+.sparout-on-mode-info {
+  text-align: left;
+}
+
+.sparout-on-mode-title {
+  font-size: 18px;
+  font-weight: 800;
+  margin: 0 0 4px;
+  color: #fff;
+}
+
+.sparout-on-mode-desc {
+  font-size: 14px;
+  color: #71717a;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .sparout-on-goals-grid {
+    grid-template-columns: 1fr;
+  }
+}

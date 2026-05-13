@@ -1,0 +1,111 @@
+.ExperienceForm-Overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  z-index: 3000;
+  display: flex;
+  flex-direction: column;
+}
+
+.ExperienceForm-Container {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #000;
+}
+
+.ExperienceForm-Header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.ExperienceForm-Header h1 {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0;
+  color: #fff;
+}
+
+.ExperienceForm-BackBtn {
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.ExperienceForm-Content {
+  flex: 1;
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  overflow-y: auto;
+}
+
+.ExperienceForm-Group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.ExperienceForm-Group label {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.ExperienceForm-Group input,
+.ExperienceForm-Group textarea {
+  background: #111;
+  border: 1px solid #222;
+  border-radius: 14px;
+  padding: 16px;
+  color: #fff;
+  font-size: 15px;
+  font-family: inherit;
+  width: 100%;
+  box-sizing: border-box;
+  transition: all 0.2s ease;
+}
+
+.ExperienceForm-Group input:focus,
+.ExperienceForm-Group textarea:focus {
+  outline: none;
+  border-color: #ff4a17;
+  background: #161616;
+}
+
+.ExperienceForm-Footer {
+  padding: 16px;
+  padding-bottom: 40px;
+}
+
+.ExperienceForm-SubmitBtn {
+  width: 100%;
+  background: #ff4a17;
+  color: #fff;
+  border: none;
+  padding: 18px;
+  border-radius: 16px;
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(255, 74, 23, 0.3);
+}
+
+.ExperienceForm-SubmitBtn:active {
+  transform: scale(0.98);
+}

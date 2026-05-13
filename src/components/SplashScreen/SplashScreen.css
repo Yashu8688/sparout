@@ -1,0 +1,108 @@
+.splash-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: #050505;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+.splash-content {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  height: 300px;
+}
+
+/* The Glowing Ring */
+.loading-ring {
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 74, 23, 0.1);
+  border-top: 3px solid #ff4a17;
+  border-right: 3px solid #ff4a17;
+  animation: ringRotate 1.5s linear infinite;
+  box-shadow: 0 0 15px rgba(255, 74, 23, 0.4);
+}
+
+@keyframes ringRotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.splash-logo {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%; /* Circle logo for martial arts feel */
+  z-index: 2;
+  object-fit: cover;
+  animation: logoEntrance 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  box-shadow: 0 0 40px rgba(0,0,0,0.8);
+}
+
+@keyframes logoEntrance {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+    filter: brightness(0);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+    filter: brightness(1.5);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    filter: brightness(1);
+  }
+}
+
+.percentage-text {
+  position: absolute;
+  bottom: -60px;
+  color: #ff4a17;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-shadow: 0 0 10px rgba(255, 74, 23, 0.5);
+}
+
+.loading-label {
+  position: absolute;
+  bottom: -85px;
+  color: #888;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+}
+
+/* Impact Ripples */
+.ripple {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  border: 1px solid #ff4a17;
+  border-radius: 50%;
+  opacity: 0;
+  animation: rippleEffect 2s ease-out infinite;
+}
+
+.ripple:nth-child(2) { animation-delay: 0.5s; }
+.ripple:nth-child(3) { animation-delay: 1s; }
+
+@keyframes rippleEffect {
+  0% { transform: scale(1); opacity: 0.5; }
+  100% { transform: scale(3); opacity: 0; }
+}

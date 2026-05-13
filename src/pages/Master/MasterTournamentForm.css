@@ -1,0 +1,221 @@
+.mtf-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #000;
+  z-index: 2000;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  overflow: hidden; /* Prevent body scroll */
+}
+
+.mtf-container {
+  width: 100%;
+  height: 100%;
+  max-width: 500px;
+  background: #000;
+  display: flex;
+  flex-direction: column;
+}
+
+.mtf-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 16px;
+  background: #000;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.mtf-header h1 {
+  font-size: 17px;
+  font-weight: 800;
+  margin: 0;
+  color: #fff;
+  letter-spacing: -0.5px;
+}
+
+.mtf-close-btn {
+  background: none;
+  border: none;
+  color: #888;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.mtf-publish-btn {
+  background: linear-gradient(135deg, #ff4a17, #ff6b3d);
+  color: #fff;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 12px;
+  font-weight: 800;
+  font-size: 13px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(255, 74, 23, 0.4);
+}
+
+.mtf-content {
+  flex: 1;
+  overflow-y: auto; /* Enable scrolling */
+  padding: 24px 16px 120px 16px; /* Extra bottom padding for scrolling */
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  -webkit-overflow-scrolling: touch; /* Smooth scroll for iOS */
+}
+
+.mtf-field {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.mtf-field label {
+  font-size: 10px;
+  font-weight: 900;
+  color: #ff4a17;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+.mtf-field input,
+.mtf-field select,
+.mtf-field textarea {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 16px;
+  color: #fff;
+  font-size: 15px;
+  outline: none;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+.mtf-field input:focus,
+.mtf-field select:focus,
+.mtf-field textarea:focus {
+  border-color: #ff4a17;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.mtf-row {
+  display: flex;
+  gap: 16px;
+  width: 100%;
+}
+
+.mtf-row .mtf-field {
+  flex: 1;
+  min-width: 0;
+}
+
+.mtf-upload-area {
+  width: 100%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.mtf-placeholder-box {
+  width: 100%;
+  height: 140px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 2px dashed rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: #666;
+}
+
+.mtf-placeholder-box:hover {
+  background: rgba(255, 74, 23, 0.02);
+  border-color: rgba(255, 74, 23, 0.3);
+  color: #ff4a17;
+}
+
+.mtf-placeholder-box span {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.mtf-preview-banner {
+  width: 100%;
+  height: 180px;
+  border-radius: 16px;
+  background-size: cover;
+  background-position: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.mtf-change-hint {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  padding: 8px;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  backdrop-filter: blur(4px);
+}
+
+.mtf-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.mtf-publish-btn:active {
+  transform: scale(0.95);
+}
+
+.mtf-remove-img-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 28px;
+  height: 28px;
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(4px);
+}
+
+.mtf-remove-img-btn:hover {
+  background: #ef4444;
+  border-color: #ef4444;
+  transform: scale(1.1);
+}
+
+.ani-slide-up {
+  animation: slideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes slideUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}

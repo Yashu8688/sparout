@@ -1,0 +1,228 @@
+.em-page-container {
+  padding: 20px 16px;
+  background-color: #000;
+  min-height: calc(100vh - 70px);
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  animation: em-fade-in 0.4s ease;
+}
+
+@keyframes em-fade-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.em-search-header {
+  margin-bottom: 24px;
+}
+
+.em-page-title {
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  margin-bottom: 16px;
+  background: linear-gradient(135deg, #fff 0%, #888 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.em-search-box-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.em-search-icon {
+  position: absolute;
+  left: 14px;
+  color: #666;
+}
+
+.em-search-input {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  padding: 14px 14px 14px 44px;
+  color: #fff;
+  font-size: 15px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.em-search-input:focus {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: #ff4a17;
+  box-shadow: 0 0 0 4px rgba(255, 74, 23, 0.1);
+}
+
+.em-filters-bar {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+  margin-bottom: 24px;
+  scrollbar-width: none;
+}
+
+.em-filters-bar::-webkit-scrollbar {
+  display: none;
+}
+
+.em-filter-chip {
+  flex: 0 0 auto;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #aaa;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.em-filter-chip.active {
+  background: #ff4a17;
+  color: #fff;
+  border-color: #ff4a17;
+  box-shadow: 0 4px 12px rgba(255, 74, 23, 0.3);
+}
+
+.em-masters-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-bottom: 80px;
+}
+
+.em-master-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 14px;
+  transition: all 0.3s ease;
+}
+
+.em-master-card:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.em-card-top {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 12px;
+}
+
+.em-master-image {
+  width: 70px;
+  height: 70px;
+  border-radius: 14px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.em-master-basic-info {
+  flex: 1;
+}
+
+.em-master-name {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+.em-specialty-tags-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-bottom: 6px;
+}
+
+.em-specialty-tag {
+  background: rgba(255, 74, 23, 0.1);
+  color: #ff4a17;
+  padding: 3px 8px;
+  border-radius: 5px;
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.em-stats-row {
+  display: flex;
+  gap: 10px;
+}
+
+.em-stat-item {
+  font-size: 11px;
+  color: #888;
+}
+
+.em-card-body {
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: 12px;
+}
+
+.em-master-desc {
+  font-size: 13px;
+  color: #aaa;
+  line-height: 1.4;
+  margin-bottom: 12px;
+}
+
+.em-price-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.em-price-label {
+  font-size: 11px;
+  color: #666;
+}
+
+.em-price-value {
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.em-connect-btn {
+  width: 100%;
+  background: #fff;
+  color: #000;
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.em-connect-btn:hover {
+  background: #eee;
+  transform: translateY(-2px);
+}
+
+.em-connect-btn.connected {
+  background: rgba(74, 222, 128, 0.1);
+  color: #4ade80;
+  border: 1px solid rgba(74, 222, 128, 0.2);
+}
+
+.em-no-results {
+  text-align: center;
+  padding: 40px 20px;
+  color: #666;
+}

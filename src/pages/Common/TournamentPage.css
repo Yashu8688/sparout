@@ -1,0 +1,267 @@
+.tp-main-container {
+  padding: 20px 16px;
+  background-color: #000;
+  min-height: calc(100vh - 70px); /* Adjust for footer */
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  animation: tp-fade-in 0.4s ease;
+}
+
+@keyframes tp-fade-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.tp-top-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.tp-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.tp-create-btn {
+  background: #ff4a17;
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 50px;
+  font-size: 12px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(255, 74, 23, 0.3);
+  white-space: nowrap;
+}
+
+.tp-booked-badge {
+  background: rgba(255, 74, 23, 0.1);
+  color: #ff4a17;
+  border: 1px solid rgba(255, 74, 23, 0.2);
+  padding: 8px 14px;
+  border-radius: 50px;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.tp-tabs-container {
+  display: flex;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 4px;
+  border-radius: 14px;
+  margin-bottom: 30px;
+  gap: 4px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.tp-tab-item {
+  flex: 1;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  background: transparent;
+  color: #888;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+}
+
+.tp-card-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.tp-edit-link {
+  background: none;
+  border: none;
+  color: #ff4a17;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 0;
+}
+
+.tp-page-title {
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  background: linear-gradient(135deg, #fff 0%, #888 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.tp-booked-badge {
+  background: rgba(255, 74, 23, 0.15);
+  color: #ff4a17;
+  border: 1px solid rgba(255, 74, 23, 0.3);
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.tp-booked-badge.active {
+  background: #ff4a17;
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(255, 74, 23, 0.3);
+}
+
+.tp-tabs-container {
+  display: flex;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 4px;
+  border-radius: 12px;
+  margin-bottom: 24px;
+  overflow-x: auto;
+  scrollbar-width: none; /* Hide scrollbar for Firefox */
+}
+
+.tp-tabs-container::-webkit-scrollbar {
+  display: none; /* Hide scrollbar for Chrome/Safari */
+}
+
+.tp-tab-item {
+  flex: 0 0 auto;
+  min-width: 80px;
+  background: transparent;
+  border: none;
+  color: #888;
+  padding: 10px 12px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.tp-tab-item.active {
+  background: #fff;
+  color: #000;
+}
+
+.tp-content-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-bottom: 80px; /* Space for footer */
+}
+
+.tp-tournament-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.tp-tournament-card:active {
+  transform: scale(0.98);
+}
+
+.tp-card-image {
+  height: 160px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.tp-card-status-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.tp-card-details {
+  padding: 16px;
+}
+
+.tp-tournament-name {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.tp-tournament-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.tp-info-item {
+  font-size: 13px;
+  color: #aaa;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  line-height: 1;
+}
+
+.tp-price {
+  color: #ff4a17;
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.tp-book-now-btn {
+  width: 100%;
+  background: #ff4a17;
+  color: #fff;
+  border: none;
+  padding: 12px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.tp-book-now-btn:hover {
+  background: #e63e0f;
+}
+
+.tp-booked-label {
+  width: 100%;
+  background: rgba(74, 222, 128, 0.1);
+  color: #4ade80;
+  border: 1px solid rgba(74, 222, 128, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 700;
+  box-sizing: border-box;
+}
+
+.tp-empty-state {
+  text-align: center;
+  padding: 40px 20px;
+  color: #666;
+}

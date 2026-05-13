@@ -1,0 +1,233 @@
+.CommunityFeed-Container {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #000000;
+  color: #ffffff;
+  padding-bottom: 90px;
+  padding-top: 70px;
+  font-family: 'Inter', sans-serif;
+}
+
+.CommunityFeed-Container.is-tab {
+  padding-top: 0;
+  min-height: calc(100vh - 160px); /* 70px header + 90px footer */
+  background-color: #000000;
+}
+
+.CommunityFeed-Main {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+/* Stories Section */
+.CommunityFeed-Stories {
+  display: flex;
+  gap: 16px;
+  padding: 16px;
+  overflow-x: auto;
+  scrollbar-width: none; /* Hide scrollbar for Firefox */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.CommunityFeed-Stories::-webkit-scrollbar {
+  display: none; /* Hide scrollbar for Chrome/Safari */
+}
+
+.CommunityFeed-StoryItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  min-width: 70px;
+}
+
+.CommunityFeed-AddStory {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px dashed rgba(255, 255, 255, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+}
+
+.CommunityFeed-StoryRing {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  padding: 2px;
+  background: linear-gradient(45deg, #ff4a17, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.CommunityFeed-StoryRing img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #000;
+}
+
+.CommunityFeed-StoryItem span {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.7);
+  white-space: nowrap;
+}
+
+/* Post Card Section */
+.CommunityFeed-PostList {
+  display: flex;
+  flex-direction: column;
+}
+
+.CommunityFeed-PostCard {
+  width: 100%;
+  margin-bottom: 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.CommunityFeed-PostHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+}
+
+.CommunityFeed-UserInfo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.CommunityFeed-UserAvatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.CommunityFeed-UserMeta {
+  display: flex;
+  flex-direction: column;
+}
+
+.CommunityFeed-UserName {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.CommunityFeed-PostTime {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.CommunityFeed-MoreBtn {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.CommunityFeed-PostMedia {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background: #111;
+  position: relative;
+  overflow: hidden;
+}
+
+.CommunityFeed-PostMedia img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.CommunityFeed-VideoOverlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.4);
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.CommunityFeed-PostActions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+}
+
+.CommunityFeed-LeftActions {
+  display: flex;
+  gap: 16px;
+}
+
+.CommunityFeed-ActionBtn {
+  background: none;
+  border: none;
+  color: #fff;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: transform 0.2s;
+}
+
+.CommunityFeed-ActionBtn:hover {
+  transform: scale(1.1);
+}
+
+.CommunityFeed-PostInfo {
+  padding: 0 16px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.CommunityFeed-LikesCount {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.CommunityFeed-Caption {
+  font-size: 14px;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.CommunityFeed-CaptionUser {
+  font-weight: 700;
+  margin-right: 6px;
+}
+
+.CommunityFeed-Hashtags {
+  font-size: 14px;
+  color: #70b5f9;
+}
+
+.CommunityFeed-ViewComments {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 14px;
+  padding: 0;
+  text-align: left;
+  cursor: pointer;
+  margin-top: 4px;
+}

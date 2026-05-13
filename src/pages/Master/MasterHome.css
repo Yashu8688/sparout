@@ -1,0 +1,228 @@
+.sparout-master-home {
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(rgba(10, 10, 11, 0.9), rgba(10, 10, 11, 0.98)), 
+              url('https://images.unsplash.com/photo-1594381898411-846e7d193883?auto=format&fit=crop&q=80&w=1200');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: #ffffff;
+  padding-bottom: 90px;
+  padding-top: 70px;
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+}
+
+.sparout-master-home.is-editing,
+.sparout-master-home.force-black {
+  padding-top: 0;
+  padding-bottom: 0;
+  background: #000 !important;
+}
+
+.sparout-home-content {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+/* Featured Section */
+.sparout-featured-section {
+  margin-bottom: 24px;
+}
+
+.sparout-featured-card {
+  width: 100%;
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sparout-featured-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.9), rgba(0,0,0,0.2));
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 20px;
+}
+
+.sparout-featured-title {
+  font-size: 18px;
+  font-weight: 800;
+  margin: 0 0 4px;
+  letter-spacing: 0.5px;
+}
+
+.sparout-featured-meta {
+  display: flex;
+  gap: 12px;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.sparout-featured-pagination {
+  display: flex;
+  gap: 6px;
+  margin-top: 12px;
+}
+
+.sparout-featured-pagination .dot {
+  width: 6px;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.sparout-featured-pagination .dot.active {
+  width: 18px;
+  background: #fff;
+  border-radius: 4px;
+}
+
+/* Quick Access Grid */
+.sparout-quick-access {
+  margin-bottom: 32px;
+}
+
+.sparout-section-title {
+  font-size: 20px;
+  font-weight: 800;
+  margin-bottom: 16px;
+  letter-spacing: -0.5px;
+}
+
+.sparout-quick-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.sparout-quick-card {
+  height: 80px;
+  border-radius: 16px;
+  padding: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sparout-quick-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.sparout-quick-card:hover {
+  transform: translateY(-4px) scale(1.02);
+  filter: brightness(1.15);
+}
+
+.sparout-quick-icon-box {
+  width: 32px;
+  height: 32px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  backdrop-filter: blur(5px);
+}
+
+.sparout-quick-icon-box svg {
+  width: 18px;
+  height: 18px;
+}
+
+.sparout-quick-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.1;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Latest News / Updates */
+.sparout-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.sparout-view-all {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.6);
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.sparout-news-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sparout-news-card {
+  display: flex;
+  gap: 16px;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 12px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+}
+
+.sparout-news-card:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.sparout-news-image {
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+  background-size: cover;
+  background-position: center;
+}
+
+.sparout-news-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.sparout-news-title {
+  font-size: 14px;
+  font-weight: 700;
+  margin: 0 0 4px;
+  line-height: 1.3;
+}
+
+.sparout-news-date {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.4);
+}

@@ -1,0 +1,138 @@
+.nt-notifications-page {
+  padding: 24px 16px;
+  background-color: #000;
+  min-height: calc(100vh - 70px);
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  animation: nt-fade-in 0.4s ease;
+}
+
+@keyframes nt-fade-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.nt-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.nt-title {
+  font-size: 24px;
+  font-weight: 800;
+  background: linear-gradient(135deg, #fff 0%, #888 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.nt-clear-btn {
+  background: none;
+  border: none;
+  color: #ff4a17;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.nt-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.nt-item {
+  display: flex;
+  gap: 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  padding: 16px;
+  position: relative;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.nt-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.nt-item.unread {
+  background: rgba(255, 74, 23, 0.05);
+  border-color: rgba(255, 74, 23, 0.2);
+}
+
+.nt-icon-box {
+  width: 44px;
+  height: 44px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.nt-item.unread .nt-icon-box {
+  background: rgba(255, 74, 23, 0.1);
+}
+
+.nt-content {
+  flex: 1;
+}
+
+.nt-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.nt-item-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.nt-time {
+  font-size: 11px;
+  color: #666;
+  font-weight: 500;
+}
+
+.nt-message {
+  font-size: 13px;
+  color: #aaa;
+  line-height: 1.5;
+}
+
+.nt-unread-indicator {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 8px;
+  height: 8px;
+  background: #ff4a17;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(255, 74, 23, 0.5);
+}
+
+.nt-empty {
+  text-align: center;
+  padding: 80px 20px;
+  color: #444;
+}
+
+.nt-empty-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+  opacity: 0.2;
+}
+
+.nt-empty p {
+  font-size: 15px;
+  font-weight: 600;
+}
