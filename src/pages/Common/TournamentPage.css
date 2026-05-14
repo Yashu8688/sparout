@@ -1,266 +1,215 @@
-.tp-main-container {
-  padding: 20px 16px;
+.st-tour-container {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 0 16px 100px; /* Removed top padding entirely */
   background-color: #000;
-  min-height: calc(100vh - 70px); /* Adjust for footer */
+  min-height: calc(100vh - 60px);
   color: #fff;
   font-family: 'Inter', sans-serif;
-  animation: tp-fade-in 0.4s ease;
+  box-sizing: border-box;
 }
 
-@keyframes tp-fade-in {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.tp-top-header {
+.st-tour-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
+  padding-top: 0px; /* Removed padding to move title up */
 }
 
-.tp-header-actions {
+.st-tour-title {
+  font-size: 28px;
+  font-weight: 950;
+  color: #fff;
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+
+.st-tour-actions {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 }
 
-.tp-create-btn {
+.st-tour-create-btn {
   background: #ff4a17;
   color: #fff;
   border: none;
   padding: 8px 14px;
   border-radius: 50px;
-  font-size: 12px;
-  font-weight: 800;
+  font-size: 13px;
+  font-weight: 900;
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 6px;
   cursor: pointer;
   box-shadow: 0 4px 12px rgba(255, 74, 23, 0.3);
-  white-space: nowrap;
 }
 
-.tp-booked-badge {
+.st-tour-booked-badge {
   background: rgba(255, 74, 23, 0.1);
   color: #ff4a17;
-  border: 1px solid rgba(255, 74, 23, 0.2);
-  padding: 8px 14px;
+  border: 1.5px solid rgba(255, 74, 23, 0.2);
+  padding: 6px 14px;
   border-radius: 50px;
-  font-size: 11px;
-  font-weight: 700;
-  cursor: pointer;
-  white-space: nowrap;
-}
-
-.tp-tabs-container {
-  display: flex;
-  background: rgba(255, 255, 255, 0.05);
-  padding: 4px;
-  border-radius: 14px;
-  margin-bottom: 30px;
-  gap: 4px;
-  overflow-x: auto;
-  scrollbar-width: none;
-}
-
-.tp-tab-item {
-  flex: 1;
-  padding: 10px;
-  border-radius: 10px;
-  border: none;
-  background: transparent;
-  color: #888;
-  font-size: 12px;
-  font-weight: 700;
-  cursor: pointer;
-  white-space: nowrap;
-  transition: all 0.3s ease;
-}
-
-.tp-card-title-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 12px;
-}
-
-.tp-edit-link {
-  background: none;
-  border: none;
-  color: #ff4a17;
-  font-size: 12px;
-  font-weight: 700;
-  cursor: pointer;
-  padding: 0;
-}
-
-.tp-page-title {
-  font-size: 24px;
-  font-weight: 800;
-  letter-spacing: -0.5px;
-  background: linear-gradient(135deg, #fff 0%, #888 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.tp-booked-badge {
-  background: rgba(255, 74, 23, 0.15);
-  color: #ff4a17;
-  border: 1px solid rgba(255, 74, 23, 0.3);
-  padding: 6px 12px;
-  border-radius: 20px;
   font-size: 13px;
-  font-weight: 600;
+  font-weight: 900;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
-.tp-booked-badge.active {
+.st-tour-booked-badge.active {
   background: #ff4a17;
   color: #fff;
   box-shadow: 0 4px 12px rgba(255, 74, 23, 0.3);
 }
 
-.tp-tabs-container {
+.st-tour-tabs {
   display: flex;
-  gap: 6px;
-  background: rgba(255, 255, 255, 0.05);
+  background: #111;
   padding: 4px;
-  border-radius: 12px;
+  border-radius: 16px;
   margin-bottom: 24px;
-  overflow-x: auto;
-  scrollbar-width: none; /* Hide scrollbar for Firefox */
+  gap: 4px;
 }
 
-.tp-tabs-container::-webkit-scrollbar {
-  display: none; /* Hide scrollbar for Chrome/Safari */
-}
-
-.tp-tab-item {
-  flex: 0 0 auto;
-  min-width: 80px;
-  background: transparent;
+.st-tour-tab-item {
+  flex: 1;
+  padding: 10px;
+  border-radius: 12px;
   border: none;
-  color: #888;
-  padding: 10px 12px;
-  border-radius: 10px;
+  background: transparent;
+  color: #666;
   font-size: 13px;
-  font-weight: 600;
+  font-weight: 800;
   cursor: pointer;
   transition: all 0.3s ease;
+  text-align: center;
 }
 
-.tp-tab-item.active {
+.st-tour-tab-item.active {
   background: #fff;
   color: #000;
 }
 
-.tp-content-list {
+.st-tour-list {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  padding-bottom: 80px; /* Space for footer */
 }
 
-.tp-tournament-card {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 16px;
+.st-tour-card {
+  background: #111;
+  border: 1px solid #222;
+  border-radius: 24px;
   overflow: hidden;
-  transition: transform 0.3s ease;
 }
 
-.tp-tournament-card:active {
-  transform: scale(0.98);
-}
-
-.tp-card-image {
-  height: 160px;
+.st-tour-card-img {
+  height: 180px;
   background-size: cover;
   background-position: center;
   position: relative;
 }
 
-.tp-card-status-badge {
+.st-tour-status-badge {
   position: absolute;
-  top: 12px;
-  left: 12px;
-  background: rgba(0, 0, 0, 0.7);
-  backdrop-filter: blur(8px);
-  padding: 4px 10px;
-  border-radius: 6px;
+  top: 14px;
+  left: 14px;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 5px 12px;
+  border-radius: 8px;
   font-size: 11px;
-  font-weight: 700;
+  font-weight: 950;
   text-transform: uppercase;
+  color: #fff;
+  letter-spacing: 0.5px;
 }
 
-.tp-card-details {
-  padding: 16px;
+.st-tour-details {
+  padding: 20px;
 }
 
-.tp-tournament-name {
-  font-size: 18px;
-  font-weight: 700;
-  margin-bottom: 12px;
+.st-tour-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 14px;
 }
 
-.tp-tournament-info {
+.st-tour-card-name {
+  font-size: 20px;
+  font-weight: 900;
+  color: #fff;
+  margin: 0;
+}
+
+.st-tour-edit-btn {
+  background: none;
+  border: none;
+  color: #ff4a17;
+  font-size: 13px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.st-tour-info-box {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  margin-bottom: 16px;
+  gap: 10px;
+  margin-bottom: 20px;
 }
 
-.tp-info-item {
-  font-size: 13px;
-  color: #aaa;
+.st-tour-info-row {
   display: flex;
   align-items: center;
   gap: 10px;
-  line-height: 1;
+  font-size: 14px;
+  color: #888;
+  font-weight: 600;
+  line-height: 1.2;
 }
 
-.tp-price {
+.st-tour-info-row svg {
   color: #ff4a17;
-  font-weight: 700;
-  font-size: 15px;
+  flex-shrink: 0;
 }
 
-.tp-book-now-btn {
+.st-tour-price-text {
+  color: #ff4a17;
+  font-weight: 900;
+}
+
+.st-tour-book-btn {
   width: 100%;
   background: #ff4a17;
   color: #fff;
   border: none;
-  padding: 12px;
-  border-radius: 10px;
-  font-size: 15px;
-  font-weight: 700;
+  padding: 14px;
+  border-radius: 16px;
+  font-size: 16px;
+  font-weight: 900;
   cursor: pointer;
-  transition: all 0.3s ease;
+  box-shadow: 0 8px 16px rgba(255, 74, 23, 0.2);
 }
 
-.tp-book-now-btn:hover {
-  background: #e63e0f;
-}
-
-.tp-booked-label {
+.st-tour-booked-label {
   width: 100%;
-  background: rgba(74, 222, 128, 0.1);
-  color: #4ade80;
-  border: 1px solid rgba(74, 222, 128, 0.2);
+  background: rgba(34, 197, 94, 0.1);
+  color: #22c55e;
+  border: 1.5px solid rgba(34, 197, 94, 0.2);
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  padding: 12px;
-  border-radius: 10px;
-  font-size: 15px;
-  font-weight: 700;
-  box-sizing: border-box;
+  gap: 10px;
+  padding: 14px;
+  border-radius: 16px;
+  font-size: 16px;
+  font-weight: 900;
 }
 
-.tp-empty-state {
+.st-tour-empty {
   text-align: center;
   padding: 40px 20px;
   color: #666;

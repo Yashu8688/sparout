@@ -32,7 +32,6 @@ const TournamentPage = ({ user }) => {
   const handleSaveTournament = async (formData) => {
     try {
       if (editingTournament) {
-        // Update existing
         const tourRef = doc(db, "tournaments", editingTournament.id);
         await updateDoc(tourRef, {
           ...formData,
@@ -40,7 +39,6 @@ const TournamentPage = ({ user }) => {
         });
         alert("Tournament updated successfully!");
       } else {
-        // Create new
         await addDoc(collection(db, "tournaments"), {
           ...formData,
           masterId: user.uid || user.id,
@@ -71,32 +69,29 @@ const TournamentPage = ({ user }) => {
     setIsFormOpen(true);
   };
 
-  // Filter Logic
-  // Filter Logic
   const filteredTournaments = tournaments.filter(t => {
     const currentUserId = user?.uid || user?.id;
-    
     if (activeSubTab === 'booked') return bookedTournaments.find(bt => bt.id === t.id);
     if (activeSubTab === 'my') return t.masterId === currentUserId;
     if (activeSubTab === 'upcoming') return t.status === 'Upcoming' || t.status === 'Open for Registration';
     if (activeSubTab === 'live') return t.status === 'Ongoing';
     if (activeSubTab === 'completed') return t.status === 'Finished';
-    return true; // 'all'
+    return true; 
   });
 
   return (
-    <div className="tp-main-container">
+    <div className="st-tour-container">
       {/* Top Section */}
-      <div className="tp-top-header">
-        <h1 className="tp-page-title">Tournaments</h1>
-        <div className="tp-header-actions">
+      <div className="st-tour-header">
+        <h1 className="st-tour-title">Tournaments</h1>
+        <div className="st-tour-actions">
           {isMaster && (
-            <button className="tp-create-btn" onClick={() => { setEditingTournament(null); setIsFormOpen(true); }}>
+            <button className="st-tour-create-btn" onClick={() => { setEditingTournament(null); setIsFormOpen(true); }}>
               <span>+</span> Create
             </button>
           )}
           <button 
-            className={`tp-booked-badge ${activeSubTab === 'booked' ? 'active' : ''}`}
+            className={`st-tour-booked-badge ${activeSubTab === 'booked' ? 'active' : ''}`}
             onClick={() => setActiveSubTab('booked')}
           >
             Booked: {bookedTournaments.length}
@@ -105,28 +100,28 @@ const TournamentPage = ({ user }) => {
       </div>
 
       {/* Tabs Section */}
-      <div className="tp-tabs-container">
+      <div className="st-tour-tabs">
         <button 
-          className={`tp-tab-item ${activeSubTab === 'upcoming' ? 'active' : ''}`}
+          className={`st-tour-tab-item ${activeSubTab === 'upcoming' ? 'active' : ''}`}
           onClick={() => setActiveSubTab('upcoming')}
         >
           Upcoming
         </button>
         <button 
-          className={`tp-tab-item ${activeSubTab === 'live' ? 'active' : ''}`}
+          className={`st-tour-tab-item ${activeSubTab === 'live' ? 'active' : ''}`}
           onClick={() => setActiveSubTab('live')}
         >
           Live
         </button>
         <button 
-          className={`tp-tab-item ${activeSubTab === 'completed' ? 'active' : ''}`}
+          className={`st-tour-tab-item ${activeSubTab === 'completed' ? 'active' : ''}`}
           onClick={() => setActiveSubTab('completed')}
         >
           Completed
         </button>
         {isMaster && (
           <button 
-            className={`tp-tab-item ${activeSubTab === 'my' ? 'active' : ''}`}
+            className={`st-tour-tab-item ${activeSubTab === 'my' ? 'active' : ''}`}
             onClick={() => setActiveSubTab('my')}
           >
             Our Tournaments
@@ -135,36 +130,50 @@ const TournamentPage = ({ user }) => {
       </div>
 
       {/* Content Area */}
-      <div className="tp-content-list">
+      <div className="st-tour-list">
         {filteredTournaments.length > 0 ? (
           filteredTournaments.map(tournament => (
-            <div key={tournament.id} className="tp-tournament-card">
+            <div key={tournament.id} className="st-tour-card">
               <div 
-                className="tp-card-image" 
+                className="st-tour-card-img" 
                 style={{ backgroundImage: `url(${tournament.image || 'https://images.unsplash.com/photo-1552072805-2a9039d00e57?auto=format&fit=crop&q=80&w=800'})` }}
               >
-                <div className="tp-card-status-badge">{tournament.status}</div>
+                <div className="st-tour-status-badge">{tournament.status}</div>
               </div>
-              <div className="tp-card-details">
-                <div className="tp-card-title-row">
-                  <h3 className="tp-tournament-name">{tournament.title}</h3>
+              <div className="st-tour-details">
+                <div className="st-tour-title-row">
+                  <h3 className="st-tour-card-name">{tournament.title}</h3>
                   {isMaster && tournament.masterId === user?.uid && (
-                    <button className="tp-edit-link" onClick={() => handleEditClick(tournament)}>Edit</button>
+                    <button className="st-tour-edit-btn" onClick={() => handleEditClick(tournament)}>Edit</button>
                   )}
                 </div>
-                <div className="tp-tournament-info">
-                  <span className="tp-info-item">
-                    📅 {tournament.startDate ? new Date(tournament.startDate).toLocaleDateString('en-GB', { day: 'numeric', month: 'short' }) : ''} 
-                    {tournament.endDate && ` – ${new Date(tournament.endDate).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })}`}
-                    {tournament.startTime && ` • 🕒 ${tournament.startTime}`}
-                  </span>
-                  <span className="tp-info-item">📍 {tournament.location}</span>
-                  <span className="tp-info-item tp-price">🎫 ₹{tournament.price}</span>
+                <div className="st-tour-info-box">
+                  <div className="st-tour-info-row">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                    <span>
+                      {tournament.startDate ? new Date(tournament.startDate).toLocaleDateString('en-GB', { day: 'numeric', month: 'short' }) : ''} 
+                      {tournament.endDate && ` – ${new Date(tournament.endDate).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })}`}
+                    </span>
+                  </div>
+                  {tournament.startTime && (
+                    <div className="st-tour-info-row">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                      <span>{tournament.startTime}</span>
+                    </div>
+                  )}
+                  <div className="st-tour-info-row">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="12" r="3"/></svg>
+                    <span>{tournament.location}</span>
+                  </div>
+                  <div className="st-tour-info-row st-tour-price-text">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2"/><path d="M6 12h.01M18 12h.01"/></svg>
+                    <span>₹{tournament.price}</span>
+                  </div>
                 </div>
                 
                 {(!isMaster || tournament.masterId !== user?.uid) && !bookedTournaments.find(t => t.id === tournament.id) && (
                   <button 
-                    className="tp-book-now-btn"
+                    className="st-tour-book-btn"
                     onClick={() => handleBookNow(tournament)}
                   >
                     Book Now
@@ -172,7 +181,7 @@ const TournamentPage = ({ user }) => {
                 )}
                 
                 {bookedTournaments.find(t => t.id === tournament.id) && (
-                  <div className="tp-booked-label">
+                  <div className="st-tour-booked-label">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
                       <polyline points="20 6 9 17 4 12"></polyline>
                     </svg>
@@ -183,7 +192,7 @@ const TournamentPage = ({ user }) => {
             </div>
           ))
         ) : (
-          <div className="tp-empty-state">
+          <div className="st-tour-empty">
             <p>{loading ? 'Loading tournaments...' : 'No tournaments found for this category.'}</p>
           </div>
         )}
