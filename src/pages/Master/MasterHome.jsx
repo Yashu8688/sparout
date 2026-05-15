@@ -196,8 +196,11 @@ const MasterHome = ({ user, onLogout }) => {
 
   return (
     <div className={`sparout-master-home ${isFullscreen ? 'is-editing' : ''} ${isProfileTab || isTournamentTab || isSearchTab || isNotificationTab ? 'force-black' : ''}`}>
-      {!isFullscreen && !isTournamentTab && !isSearchTab && !isNotificationTab && (
-        <Header onNotificationClick={() => setActiveTab('notifications')} />
+      {!isFullscreen && !isSearchTab && !isNotificationTab && (
+        <Header 
+          onNotificationClick={() => setActiveTab('notifications')} 
+          title={isTournamentTab ? "TOURNAMENTS" : null}
+        />
       )}
       {renderContent()}
       {!isFullscreen && <Footer activeTab={activeTab === 'notifications' ? '' : activeTab} onTabChange={setActiveTab} userRole="master" />}

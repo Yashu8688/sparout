@@ -231,8 +231,8 @@ const StudentHome = ({ user, onLogout }) => {
           <span className="sh-activity-growth">+ 30% WK / WK</span>
         </div>
         <div className="sh-activity-chart">
-          {weeklyActivity.map(item => (
-            <div key={item.day} className="sh-activity-bar-col">
+          {weeklyActivity.map((item, i) => (
+            <div key={i} className="sh-activity-bar-col">
               <div 
                 className={`sh-activity-bar ${item.active ? 'active' : ''}`} 
               ></div>
@@ -322,8 +322,11 @@ const StudentHome = ({ user, onLogout }) => {
 
   return (
     <div className={`sparout-home-page ${isFullscreen ? 'is-editing' : ''} ${isProfileTab || isTournamentTab || isSearchTab || isNotificationTab ? 'force-black' : ''}`}>
-      {!isFullscreen && !isTournamentTab && !isSearchTab && !isNotificationTab && (
-        <Header onNotificationClick={() => setActiveTab('notifications')} />
+      {!isFullscreen && !isSearchTab && !isNotificationTab && (
+        <Header 
+          onNotificationClick={() => setActiveTab('notifications')} 
+          title={isTournamentTab ? "TOURNAMENTS" : null}
+        />
       )}
       {renderContent()}
       {!isFullscreen && <Footer activeTab={activeTab === 'notifications' ? '' : activeTab} onTabChange={setActiveTab} userRole="student" />}

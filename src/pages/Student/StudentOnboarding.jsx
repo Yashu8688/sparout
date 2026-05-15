@@ -11,19 +11,23 @@ const StudentOnboarding = ({ user, onFinish }) => {
     city: '',
     state: '',
     country: '',
+    education: '',
+    institution: '',
+    experience: 'Beginner',
     interests: [],
     height: '',
     weight: '',
-    experience: 'Beginner',
     goals: [],
     learningModes: [],
   });
   const [isGenderOpen, setIsGenderOpen] = useState(false);
   const [isExperienceOpen, setIsExperienceOpen] = useState(false);
+  const [isEducationOpen, setIsEducationOpen] = useState(false);
 
-  const totalSteps = 5;
+  const totalSteps = 6;
 
   const genderOptions = ["Male", "Female", "Other"];
+  const educationOptions = ["School", "High School", "Undergraduate", "Postgraduate", "Other"];
   const experienceOptions = ["Beginner", "Intermediate", "Advanced", "Professional"];
 
   const games = [
@@ -192,6 +196,94 @@ const StudentOnboarding = ({ user, onFinish }) => {
         {step === 2 && (
           <div className="sparout-on-step sparout-on-step-2 sparout-on-animate">
             <div className="sparout-on-title-section">
+              <h2 className="sparout-on-title">Education & Experience</h2>
+              <p className="sparout-on-subtitle">Your academic and martial arts background</p>
+            </div>
+            
+            <div className="sparout-on-form">
+              <div className="sparout-on-input-group">
+                <label className="sparout-on-label">Current Education</label>
+                <div className={`sparout-on-custom-select ${isEducationOpen ? 'open' : ''}`} onClick={() => setIsEducationOpen(!isEducationOpen)}>
+                  <div className="sparout-on-select-trigger">
+                    <span>{formData.education || "Select Education"}</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="m6 9 6 6 6-6"/>
+                    </svg>
+                  </div>
+                  {isEducationOpen && (
+                    <div className="sparout-on-options">
+                      {educationOptions.map(opt => (
+                        <div 
+                          key={opt} 
+                          className="sparout-on-option" 
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setFormData(prev => ({ ...prev, education: opt }));
+                            setIsEducationOpen(false);
+                          }}
+                        >
+                          {opt}
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              <div className="sparout-on-input-group">
+                <label className="sparout-on-label">School / College Name</label>
+                <input 
+                  type="text" 
+                  name="institution" 
+                  value={formData.institution} 
+                  onChange={handleChange} 
+                  placeholder="Enter your institution" 
+                  className="sparout-on-input" 
+                />
+              </div>
+
+              <div className="sparout-on-input-group">
+                <label className="sparout-on-label">Martial Arts Experience</label>
+                <div className={`sparout-on-custom-select ${isExperienceOpen ? 'open' : ''}`} onClick={() => setIsExperienceOpen(!isExperienceOpen)}>
+                  <div className="sparout-on-select-trigger">
+                    <span>{formData.experience}</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="m6 9 6 6 6-6"/>
+                    </svg>
+                  </div>
+                  {isExperienceOpen && (
+                    <div className="sparout-on-options">
+                      {experienceOptions.map(opt => (
+                        <div 
+                          key={opt} 
+                          className="sparout-on-option" 
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setFormData(prev => ({ ...prev, experience: opt }));
+                            setIsExperienceOpen(false);
+                          }}
+                        >
+                          {opt}
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              <div className="sparout-on-btn-group">
+                <button className="sparout-on-back-btn" onClick={prevStep}>Back</button>
+                <button className="sparout-on-next-btn" onClick={nextStep} disabled={!formData.education || !formData.institution}>
+                  Next Step
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {step === 3 && (
+          <div className="sparout-on-step sparout-on-step-3 sparout-on-animate">
+            <div className="sparout-on-title-section">
               <h2 className="sparout-on-title">Interest of Games</h2>
               <p className="sparout-on-subtitle">Select the martial arts you're interested in</p>
             </div>
@@ -217,8 +309,8 @@ const StudentOnboarding = ({ user, onFinish }) => {
           </div>
         )}
 
-        {step === 3 && (
-          <div className="sparout-on-step sparout-on-step-3 sparout-on-animate">
+        {step === 4 && (
+          <div className="sparout-on-step sparout-on-step-4 sparout-on-animate">
             <div className="sparout-on-title-section">
               <h2 className="sparout-on-title">Physical Stats</h2>
               <p className="sparout-on-subtitle">Help us tailor your training</p>
@@ -253,34 +345,6 @@ const StudentOnboarding = ({ user, onFinish }) => {
                   <label className="sparout-on-label">Weight (kg)</label>
                   <input type="number" name="weight" value={formData.weight} onChange={handleChange} placeholder="e.g. 70" className="sparout-on-input" />
                 </div>
-                <div className="sparout-on-input-group">
-                  <label className="sparout-on-label">Experience Level</label>
-                  <div className={`sparout-on-custom-select ${isExperienceOpen ? 'open' : ''}`} onClick={() => setIsExperienceOpen(!isExperienceOpen)}>
-                    <div className="sparout-on-select-trigger">
-                      <span>{formData.experience}</span>
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <path d="m6 9 6 6 6-6"/>
-                      </svg>
-                    </div>
-                    {isExperienceOpen && (
-                      <div className="sparout-on-options">
-                        {experienceOptions.map(opt => (
-                          <div 
-                            key={opt} 
-                            className="sparout-on-option" 
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              setFormData(prev => ({ ...prev, experience: opt }));
-                              setIsExperienceOpen(false);
-                            }}
-                          >
-                            {opt}
-                          </div>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                </div>
               </div>
             </div>
 
@@ -293,8 +357,8 @@ const StudentOnboarding = ({ user, onFinish }) => {
           </div>
         )}
 
-        {step === 4 && (
-          <div className="sparout-on-step sparout-on-step-4 sparout-on-animate">
+        {step === 5 && (
+          <div className="sparout-on-step sparout-on-step-5 sparout-on-animate">
             <div className="sparout-on-title-section">
               <h2 className="sparout-on-title">Your Goals</h2>
               <p className="sparout-on-subtitle">What do you want to achieve?</p>
@@ -328,8 +392,8 @@ const StudentOnboarding = ({ user, onFinish }) => {
           </div>
         )}
 
-        {step === 5 && (
-          <div className="sparout-on-step sparout-on-step-5 sparout-on-animate">
+        {step === 6 && (
+          <div className="sparout-on-step sparout-on-step-6 sparout-on-animate">
             <div className="sparout-on-title-section">
               <h2 className="sparout-on-title">Learning Mode</h2>
               <p className="sparout-on-subtitle">Choose your preferred training style</p>

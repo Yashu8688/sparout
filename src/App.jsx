@@ -106,7 +106,11 @@ function App() {
       }
     } catch (error) {
       console.error("Login Error:", error);
-      if (error.code === 'auth/user-not-found' || error.code === 'auth/wrong-password') {
+      if (
+        error.code === 'auth/user-not-found' || 
+        error.code === 'auth/wrong-password' || 
+        error.code === 'auth/invalid-credential'
+      ) {
         alert("Invalid email or password. Please check your credentials.");
       } else {
         alert(error.message);

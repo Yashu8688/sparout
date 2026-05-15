@@ -1,7 +1,7 @@
 import React from 'react';
 import './Header.css';
 
-const Header = ({ onNotificationClick }) => {
+const Header = ({ onNotificationClick, title }) => {
   return (
     <header className="sparout-main-header">
       <div className="sparout-header-content">
@@ -14,9 +14,13 @@ const Header = ({ onNotificationClick }) => {
         </button>
 
         <div className="sparout-logo-container">
-          <div className="sparout-logo-text">
-            <span className="spa">SPA</span><span className="rout">ROUT</span>
-          </div>
+          {title ? (
+            <h2 className="sparout-header-title">{title}</h2>
+          ) : (
+            <div className="sparout-logo-text">
+              <span className="spa">SPA</span><span className="rout">ROUT</span>
+            </div>
+          )}
         </div>
 
         <button className="sparout-notif-btn" onClick={onNotificationClick}>

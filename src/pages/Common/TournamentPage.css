@@ -1,216 +1,259 @@
-.st-tour-container {
+.tp-container {
   width: 100%;
-  max-width: 500px;
+  max-width: 380px;
   margin: 0 auto;
-  padding: 0 16px 100px; /* Removed top padding entirely */
+  padding: 0 16px 100px;
   background-color: #000;
-  min-height: calc(100vh - 60px);
-  color: #fff;
-  font-family: 'Inter', sans-serif;
+  min-height: 100vh;
   box-sizing: border-box;
 }
 
-.st-tour-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-  padding-top: 0px; /* Removed padding to move title up */
+/* Page Header */
+.tp-page-header {
+  padding: 24px 0 8px;
 }
 
-.st-tour-title {
+.tp-header-title-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+
+.tp-header-title {
   font-size: 28px;
-  font-weight: 950;
+  font-weight: 800;
   color: #fff;
   margin: 0;
-  letter-spacing: -0.5px;
 }
 
-.st-tour-actions {
+.tp-header-subtitle {
+  font-size: 14px;
+  color: #888;
+  margin: 0;
+}
+
+/* Filter Bar */
+.tp-filter-section {
+  padding: 16px 0 12px;
+}
+
+.tp-segmented-bar {
   display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.st-tour-create-btn {
-  background: #ff4a17;
-  color: #fff;
-  border: none;
-  padding: 8px 14px;
-  border-radius: 50px;
-  font-size: 13px;
-  font-weight: 900;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  cursor: pointer;
-  box-shadow: 0 4px 12px rgba(255, 74, 23, 0.3);
-}
-
-.st-tour-booked-badge {
-  background: rgba(255, 74, 23, 0.1);
-  color: #ff4a17;
-  border: 1.5px solid rgba(255, 74, 23, 0.2);
-  padding: 6px 14px;
-  border-radius: 50px;
-  font-size: 13px;
-  font-weight: 900;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.st-tour-booked-badge.active {
-  background: #ff4a17;
-  color: #fff;
-  box-shadow: 0 4px 12px rgba(255, 74, 23, 0.3);
-}
-
-.st-tour-tabs {
-  display: flex;
-  background: #111;
+  background: #111111;
+  border: 1px solid #222;
   padding: 4px;
-  border-radius: 16px;
-  margin-bottom: 24px;
+  border-radius: 50px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.tp-segmented-bar::-webkit-scrollbar {
+  display: none;
+}
+
+.tp-segment-item {
+  flex: 1;
+  min-width: fit-content;
+  padding: 10px 20px;
+  background: transparent;
+  border: none;
+  border-radius: 50px;
+  color: #666;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s;
+}
+
+.tp-segment-item.active {
+  background: #222;
+  color: #fff;
+  border: 1px solid #333;
+}
+
+/* Govt Banner */
+.tp-govt-banner {
+  background: #061a14;
+  border: 1px solid #0d3d2e;
+  border-radius: 20px;
+  padding: 20px;
+  display: flex;
+  gap: 15px;
+  margin: 12px 0 20px;
+}
+
+.tp-govt-banner-icon {
+  color: #00cc88;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.tp-govt-banner-title {
+  font-size: 16px;
+  font-weight: 800;
+  color: #fff;
+  margin: 0 0 6px 0;
+}
+
+.tp-govt-banner-text {
+  font-size: 13px;
+  line-height: 1.5;
+  color: #aaa;
+  margin: 0;
+}
+
+/* Results Info */
+.tp-results-info {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+/* Card Styling */
+.tp-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.tp-card {
+  background: #1c1c1e;
+  border-radius: 24px;
+  overflow: hidden;
+  border: 1px solid #2c2c2e;
+}
+
+.tp-image-area {
+  position: relative;
+  height: 120px;
+  width: 100%;
+}
+
+.tp-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.tp-badges-top {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: flex;
+  gap: 8px;
+}
+
+.tp-verified-badge {
+  background: #ff453a;
+  color: #fff;
+  padding: 5px 12px;
+  border-radius: 50px;
+  font-size: 10px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
   gap: 4px;
 }
 
-.st-tour-tab-item {
-  flex: 1;
-  padding: 10px;
-  border-radius: 12px;
-  border: none;
-  background: transparent;
-  color: #666;
-  font-size: 13px;
-  font-weight: 800;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  text-align: center;
-}
-
-.st-tour-tab-item.active {
-  background: #fff;
-  color: #000;
-}
-
-.st-tour-list {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.st-tour-card {
-  background: #111;
-  border: 1px solid #222;
-  border-radius: 24px;
-  overflow: hidden;
-}
-
-.st-tour-card-img {
-  height: 180px;
-  background-size: cover;
-  background-position: center;
-  position: relative;
-}
-
-.st-tour-status-badge {
-  position: absolute;
-  top: 14px;
-  left: 14px;
-  background: rgba(0, 0, 0, 0.8);
-  padding: 5px 12px;
-  border-radius: 8px;
-  font-size: 11px;
-  font-weight: 950;
-  text-transform: uppercase;
+.tp-govt-badge {
+  background: #00cc88;
   color: #fff;
-  letter-spacing: 0.5px;
+  padding: 5px 12px;
+  border-radius: 50px;
+  font-size: 10px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }
 
-.st-tour-details {
-  padding: 20px;
+.tp-mode-badge {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(4px);
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 
-.st-tour-title-row {
+/* Content Layout */
+.tp-content {
+  padding: 12px;
+  text-align: left;
+}
+
+.tp-title {
+  font-size: 15px;
+  font-weight: 800;
+  color: #fff;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.tp-meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.tp-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #888;
+  font-size: 13px;
+}
+
+.tp-pill-wrapper {
+  margin-bottom: 15px;
+}
+
+.tp-category-pill {
+  background: #2c2c2e;
+  color: #fff;
+  padding: 6px 14px;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.tp-divider {
+  height: 1px;
+  background: #2c2c2e;
+  margin: 15px 0;
+}
+
+.tp-footer {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 14px;
+  align-items: center;
 }
 
-.st-tour-card-name {
+.tp-price {
+  color: #ff4a17;
   font-size: 20px;
   font-weight: 900;
-  color: #fff;
-  margin: 0;
 }
 
-.st-tour-edit-btn {
-  background: none;
-  border: none;
-  color: #ff4a17;
-  font-size: 13px;
-  font-weight: 800;
-  cursor: pointer;
+.tp-dollar {
+  font-size: 16px;
+  margin-right: 2px;
 }
 
-.st-tour-info-box {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-bottom: 20px;
-}
-
-.st-tour-info-row {
+.tp-organizer {
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-size: 14px;
-  color: #888;
-  font-weight: 600;
-  line-height: 1.2;
-}
-
-.st-tour-info-row svg {
-  color: #ff4a17;
-  flex-shrink: 0;
-}
-
-.st-tour-price-text {
-  color: #ff4a17;
-  font-weight: 900;
-}
-
-.st-tour-book-btn {
-  width: 100%;
-  background: #ff4a17;
-  color: #fff;
-  border: none;
-  padding: 14px;
-  border-radius: 16px;
-  font-size: 16px;
-  font-weight: 900;
-  cursor: pointer;
-  box-shadow: 0 8px 16px rgba(255, 74, 23, 0.2);
-}
-
-.st-tour-booked-label {
-  width: 100%;
-  background: rgba(34, 197, 94, 0.1);
-  color: #22c55e;
-  border: 1.5px solid rgba(34, 197, 94, 0.2);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  padding: 14px;
-  border-radius: 16px;
-  font-size: 16px;
-  font-weight: 900;
-}
-
-.st-tour-empty {
-  text-align: center;
-  padding: 40px 20px;
+  gap: 6px;
   color: #666;
+  font-size: 13px;
 }

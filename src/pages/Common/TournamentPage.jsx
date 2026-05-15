@@ -1,209 +1,197 @@
-import React, { useState, useEffect } from 'react';
-import { collection, query, where, onSnapshot, addDoc, updateDoc, doc, serverTimestamp } from 'firebase/firestore';
-import { db } from '../../firebase';
-import MasterTournamentForm from '../Master/MasterTournamentForm';
+import React, { useState } from 'react';
 import './TournamentPage.css';
 
 const TournamentPage = ({ user }) => {
-  const [activeSubTab, setActiveSubTab] = useState('upcoming'); // 'all', 'my', 'upcoming', 'live', 'completed', 'booked'
-  const [bookedTournaments, setBookedTournaments] = useState([]);
-  const [tournaments, setTournaments] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [isFormOpen, setIsFormOpen] = useState(false);
-  const [editingTournament, setEditingTournament] = useState(null);
+  const [activeFilter, setActiveFilter] = useState('Regular Tournaments');
 
-  const isMaster = user?.role === 'master';
+  const filters = [
+    'Regular Tournaments',
+    'Government Games',
+    'Attended',
+    'Booking'
+  ];
 
-  // Listen for real-time tournaments
-  useEffect(() => {
-    const q = collection(db, "tournaments");
-    const unsubscribe = onSnapshot(q, (querySnapshot) => {
-      const list = querySnapshot.docs.map(doc => ({
-        id: doc.id,
-        ...doc.data()
-      }));
-      setTournaments(list);
-      setLoading(false);
-    });
-
-    return () => unsubscribe();
-  }, []);
-
-  const handleSaveTournament = async (formData) => {
-    try {
-      if (editingTournament) {
-        const tourRef = doc(db, "tournaments", editingTournament.id);
-        await updateDoc(tourRef, {
-          ...formData,
-          updatedAt: serverTimestamp()
-        });
-        alert("Tournament updated successfully!");
-      } else {
-        await addDoc(collection(db, "tournaments"), {
-          ...formData,
-          masterId: user.uid || user.id,
-          masterName: user.fullName || user.name,
-          createdAt: serverTimestamp()
-        });
-        alert("Tournament published successfully!");
-      }
-      setIsFormOpen(false);
-      setEditingTournament(null);
-    } catch (error) {
-      console.error("Save Tournament Error:", error);
-      alert("Failed to save tournament.");
+  const tournaments = [
+    {
+      id: 1,
+      name: "Bay Area Youth Karate Championship",
+      type: "Regular Tournaments",
+      date: "Mar 15, 2026",
+      location: "Oakland Convention Center",
+      category: "Karate",
+      price: "45",
+      currency: "$",
+      mode: "IN-PERSON",
+      organizer: "Northern California...",
+      verified: true,
+      isGovt: false,
+      image: "https://images.unsplash.com/photo-1555597673-b21d5c935865?auto=format&fit=crop&q=80&w=800"
+    },
+    {
+      id: 2,
+      name: "Spring Online Taekwondo Open",
+      type: "Regular Tournaments",
+      date: "Apr 2, 2026",
+      location: "Virtual Event",
+      category: "Taekwondo",
+      price: "FREE",
+      currency: "",
+      mode: "ONLINE",
+      organizer: "Global TKD...",
+      verified: true,
+      isGovt: false,
+      image: "https://images.unsplash.com/photo-1552072092-7f9b8d63efcb?auto=format&fit=crop&q=80&w=800"
+    },
+    {
+      id: 3,
+      name: "God Games National Championship",
+      type: "Government Games",
+      date: "Jul 20, 2026",
+      location: "New Delhi, India",
+      category: "All Martial Arts",
+      price: "2000",
+      currency: "₹",
+      mode: "IN-PERSON",
+      organizer: "Government of India...",
+      verified: true,
+      isGovt: true,
+      image: "https://images.unsplash.com/photo-1594381898411-846e7d193883?auto=format&fit=crop&q=80&w=800"
+    },
+    {
+      id: 4,
+      name: "National Youth Sports Meet",
+      type: "Government Games",
+      date: "Aug 15, 2026",
+      location: "Mumbai, India",
+      category: "Judo & Karate",
+      price: "500",
+      currency: "₹",
+      mode: "IN-PERSON",
+      organizer: "Sports Authority...",
+      verified: true,
+      isGovt: true,
+      image: "https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&q=80&w=800"
     }
-  };
+  ];
 
-  const handleBookNow = (tournament) => {
-    if (!bookedTournaments.find(t => t.id === tournament.id)) {
-      setBookedTournaments([...bookedTournaments, tournament]);
-      alert(`Successfully booked: ${tournament.title}`);
-    } else {
-      alert('You have already booked this tournament.');
-    }
-  };
-
-  const handleEditClick = (tournament) => {
-    setEditingTournament(tournament);
-    setIsFormOpen(true);
-  };
-
+  const isGovtView = activeFilter === 'Government Games';
+  
   const filteredTournaments = tournaments.filter(t => {
-    const currentUserId = user?.uid || user?.id;
-    if (activeSubTab === 'booked') return bookedTournaments.find(bt => bt.id === t.id);
-    if (activeSubTab === 'my') return t.masterId === currentUserId;
-    if (activeSubTab === 'upcoming') return t.status === 'Upcoming' || t.status === 'Open for Registration';
-    if (activeSubTab === 'live') return t.status === 'Ongoing';
-    if (activeSubTab === 'completed') return t.status === 'Finished';
-    return true; 
+    if (activeFilter === 'Regular Tournaments') return t.type === 'Regular Tournaments';
+    if (activeFilter === 'Government Games') return t.type === 'Government Games';
+    return true;
   });
 
   return (
-    <div className="st-tour-container">
-      {/* Top Section */}
-      <div className="st-tour-header">
-        <h1 className="st-tour-title">Tournaments</h1>
-        <div className="st-tour-actions">
-          {isMaster && (
-            <button className="st-tour-create-btn" onClick={() => { setEditingTournament(null); setIsFormOpen(true); }}>
-              <span>+</span> Create
+    <div className="tp-container">
+      {/* Segmented Filter */}
+      <div className="tp-filter-section">
+        <div className="tp-segmented-bar">
+          {filters.map(filter => (
+            <button 
+              key={filter} 
+              className={`tp-segment-item ${activeFilter === filter ? 'active' : ''}`}
+              onClick={() => setActiveFilter(filter)}
+            >
+              {filter}
             </button>
-          )}
-          <button 
-            className={`st-tour-booked-badge ${activeSubTab === 'booked' ? 'active' : ''}`}
-            onClick={() => setActiveSubTab('booked')}
-          >
-            Booked: {bookedTournaments.length}
-          </button>
+          ))}
         </div>
       </div>
 
-      {/* Tabs Section */}
-      <div className="st-tour-tabs">
-        <button 
-          className={`st-tour-tab-item ${activeSubTab === 'upcoming' ? 'active' : ''}`}
-          onClick={() => setActiveSubTab('upcoming')}
-        >
-          Upcoming
-        </button>
-        <button 
-          className={`st-tour-tab-item ${activeSubTab === 'live' ? 'active' : ''}`}
-          onClick={() => setActiveSubTab('live')}
-        >
-          Live
-        </button>
-        <button 
-          className={`st-tour-tab-item ${activeSubTab === 'completed' ? 'active' : ''}`}
-          onClick={() => setActiveSubTab('completed')}
-        >
-          Completed
-        </button>
-        {isMaster && (
-          <button 
-            className={`st-tour-tab-item ${activeSubTab === 'my' ? 'active' : ''}`}
-            onClick={() => setActiveSubTab('my')}
-          >
-            Our Tournaments
-          </button>
-        )}
+      {/* Government Info Banner */}
+      {isGovtView && (
+        <div className="tp-govt-banner">
+          <div className="tp-govt-banner-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/>
+            </svg>
+          </div>
+          <div className="tp-govt-banner-content">
+            <h4 className="tp-govt-banner-title">Government-Sanctioned Events</h4>
+            <p className="tp-govt-banner-text">
+              Official tournaments organized by government sports authorities. Top performers may qualify for national and international competitions.
+            </p>
+          </div>
+        </div>
+      )}
+
+      {/* Results Count Area */}
+      <div className="tp-results-info">
+        {filteredTournaments.length} {isGovtView ? 'government ' : ''}tournaments available
       </div>
 
-      {/* Content Area */}
-      <div className="st-tour-list">
-        {filteredTournaments.length > 0 ? (
-          filteredTournaments.map(tournament => (
-            <div key={tournament.id} className="st-tour-card">
-              <div 
-                className="st-tour-card-img" 
-                style={{ backgroundImage: `url(${tournament.image || 'https://images.unsplash.com/photo-1552072805-2a9039d00e57?auto=format&fit=crop&q=80&w=800'})` }}
-              >
-                <div className="st-tour-status-badge">{tournament.status}</div>
-              </div>
-              <div className="st-tour-details">
-                <div className="st-tour-title-row">
-                  <h3 className="st-tour-card-name">{tournament.title}</h3>
-                  {isMaster && tournament.masterId === user?.uid && (
-                    <button className="st-tour-edit-btn" onClick={() => handleEditClick(tournament)}>Edit</button>
-                  )}
-                </div>
-                <div className="st-tour-info-box">
-                  <div className="st-tour-info-row">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-                    <span>
-                      {tournament.startDate ? new Date(tournament.startDate).toLocaleDateString('en-GB', { day: 'numeric', month: 'short' }) : ''} 
-                      {tournament.endDate && ` – ${new Date(tournament.endDate).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })}`}
-                    </span>
-                  </div>
-                  {tournament.startTime && (
-                    <div className="st-tour-info-row">
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                      <span>{tournament.startTime}</span>
-                    </div>
-                  )}
-                  <div className="st-tour-info-row">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="12" r="3"/></svg>
-                    <span>{tournament.location}</span>
-                  </div>
-                  <div className="st-tour-info-row st-tour-price-text">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2"/><path d="M6 12h.01M18 12h.01"/></svg>
-                    <span>₹{tournament.price}</span>
-                  </div>
-                </div>
-                
-                {(!isMaster || tournament.masterId !== user?.uid) && !bookedTournaments.find(t => t.id === tournament.id) && (
-                  <button 
-                    className="st-tour-book-btn"
-                    onClick={() => handleBookNow(tournament)}
-                  >
-                    Book Now
-                  </button>
-                )}
-                
-                {bookedTournaments.find(t => t.id === tournament.id) && (
-                  <div className="st-tour-booked-label">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-                      <polyline points="20 6 9 17 4 12"></polyline>
+      {/* Cards List */}
+      <div className="tp-list">
+        {filteredTournaments.map(t => (
+          <div key={t.id} className="tp-card">
+            <div className="tp-image-area">
+              <img src={t.image} alt={t.name} className="tp-img" />
+              <div className="tp-badges-top">
+                {t.verified && (
+                  <div className="tp-verified-badge">
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round">
+                      <polyline points="20 6 9 17 4 12"/>
                     </svg>
-                    Booked
+                    VERIFIED
                   </div>
                 )}
+                {t.isGovt && (
+                  <div className="tp-govt-badge">
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/>
+                    </svg>
+                    GOVT
+                  </div>
+                )}
+              </div>
+              <div className="tp-mode-badge">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+                </svg>
+                {t.mode}
               </div>
             </div>
-          ))
-        ) : (
-          <div className="st-tour-empty">
-            <p>{loading ? 'Loading tournaments...' : 'No tournaments found for this category.'}</p>
-          </div>
-        )}
-      </div>
 
-      <MasterTournamentForm 
-        isOpen={isFormOpen}
-        onClose={() => setIsFormOpen(false)}
-        onSave={handleSaveTournament}
-        editingData={editingTournament}
-      />
+            <div className="tp-content">
+              <h3 className="tp-title">{t.name}</h3>
+              
+              <div className="tp-meta-row">
+                <div className="tp-meta-item">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+                  </svg>
+                  {t.date}
+                </div>
+                <div className="tp-meta-item">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+                  </svg>
+                  {t.location}
+                </div>
+              </div>
+
+              <div className="tp-pill-wrapper">
+                <span className="tp-category-pill">{t.category}</span>
+              </div>
+
+              <div className="tp-divider"></div>
+
+              <div className="tp-footer">
+                <div className="tp-price">
+                  <span className="tp-dollar">{t.currency}</span> {t.price}
+                </div>
+                <div className="tp-organizer">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                  </svg>
+                  {t.organizer}
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

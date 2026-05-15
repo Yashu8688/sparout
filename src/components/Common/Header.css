@@ -73,3 +73,12 @@
   align-items: center;
   border: 1.5px solid #000;
 }
+
+.sparout-header-title {
+  font-size: 20px;
+  font-weight: 950;
+  text-transform: uppercase;
+  color: #fff;
+  letter-spacing: 0.5px;
+  margin: 0;
+}
