@@ -265,7 +265,7 @@
 
 .StudentProfile-BannerBox {
   width: 100%;
-  height: 220px;
+  height: 140px;
   position: relative;
   background: #111;
   overflow: hidden;
@@ -294,11 +294,12 @@
 .StudentProfile-IdentityBox {
   padding: 0 16px;
   display: flex;
-  gap: 16px;
-  margin-top: -50px;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin-top: -60px;
   position: relative;
   z-index: 5;
-  align-items: flex-end;
 }
 
 .StudentProfile-AvatarWrapper {
@@ -319,47 +320,49 @@
 }
 
 .StudentProfile-MainInfo {
-  flex: 1;
+  width: 100%;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
 .StudentProfile-NameRow {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
-  height: 50px;
-  padding-bottom: 5px;
+  margin-top: 10px;
+  margin-bottom: 5px;
 }
 
 .StudentProfile-NameText {
   font-size: 26px;
   font-weight: 800;
   color: #fff;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  letter-spacing: -0.5px;
   margin: 0;
 }
 
 .StudentProfile-BioDetails {
-  background: #000;
-  padding: 10px 0;
-  position: relative;
+  padding: 2px 0;
 }
 
 .StudentProfile-Headline {
   font-size: 14px;
-  color: rgba(255, 255, 255, 0.7);
-  font-weight: 600;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.5);
-  line-height: 1.3;
-  max-width: 200px;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 500;
+  line-height: 1.2;
+  margin: 2px 0;
 }
 
 .StudentProfile-Specialty {
-  font-size: 13px;
-  color: rgba(255, 255, 255, 0.4);
-  font-weight: 600;
+  font-size: 12px;
+  color: #ff4a17;
+  font-weight: 800;
   margin-top: 4px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 
@@ -901,4 +904,357 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+/* Specializations Section Styles */
+.StudentProfile-SpecTitle {
+  display: flex;
+  align-items: center;
+}
+
+.StudentProfile-SpecGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.StudentProfile-SpecTag {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 10px 20px;
+  border-radius: 100px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  transition: all 0.2s ease;
+  cursor: default;
+}
+
+.StudentProfile-SpecTag:hover {
+  background: rgba(255, 74, 23, 0.1);
+  border-color: #ff4a17;
+  transform: translateY(-2px);
+}
+
+/* Certifications Section Styles */
+.StudentProfile-CertTitle {
+  display: flex;
+  align-items: center;
+}
+
+.StudentProfile-CertList {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.StudentProfile-CertItem {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.StudentProfile-CertIcon {
+  width: 52px;
+  height: 52px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.StudentProfile-CertInfo {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.StudentProfile-CertInfo h4 {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0;
+  color: #fff;
+  line-height: 1.2;
+}
+
+.StudentProfile-CertInfo p {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 4px 0 2px;
+}
+
+.StudentProfile-CertInfo span {
+  font-size: 13px;
+  color: #666;
+  font-weight: 500;
+}
+
+/* Training History Section Styles */
+.StudentProfile-TrainingTitle {
+  display: flex;
+  align-items: center;
+}
+
+.StudentProfile-TrainingList {
+  display: flex;
+  flex-direction: column;
+}
+
+.StudentProfile-TrainingItem {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.StudentProfile-TrainingItem:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.StudentProfile-TrainingItem:first-child {
+  padding-top: 0;
+}
+
+.StudentProfile-TrainingIcon {
+  width: 52px;
+  height: 52px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.StudentProfile-TrainingInfo {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.StudentProfile-TrainingInfo h4 {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0;
+  color: #fff;
+  line-height: 1.2;
+}
+
+.StudentProfile-TrainingInfo p {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 4px 0 2px;
+}
+
+.StudentProfile-TrainingInfo span {
+  font-size: 13px;
+  color: #666;
+  font-weight: 500;
+}
+
+/* Achievements Section Styles */
+.StudentProfile-AchTitle {
+  display: flex;
+  align-items: center;
+}
+
+.StudentProfile-AchGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.StudentProfile-AchCard {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 20px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.StudentProfile-AchCard:hover {
+  background: rgba(255, 74, 23, 0.05);
+  border-color: rgba(255, 74, 23, 0.2);
+  transform: translateY(-4px);
+}
+
+.StudentProfile-AchIcon {
+  font-size: 38px !important;
+  line-height: 1;
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.StudentProfile-AchCard h4 {
+  font-size: 12px;
+  font-weight: 700;
+  color: #fff;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.StudentProfile-AchCard span {
+  font-size: 10px;
+  color: #666;
+  margin-top: 6px;
+  font-weight: 500;
+}
+
+/* Belt Journey Section Styles */
+.StudentProfile-BeltTitle {
+  display: flex;
+  align-items: center;
+}
+
+.StudentProfile-BeltList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.StudentProfile-BeltItem {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  text-align: left;
+}
+
+.StudentProfile-BeltStatus {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.StudentProfile-BeltStatus svg {
+  width: 100%;
+  height: 100%;
+}
+
+.StudentProfile-BeltInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.StudentProfile-BeltInfo h4 {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.StudentProfile-BeltItem.completed h4 {
+  color: #00c853;
+}
+
+.StudentProfile-BeltItem.current h4 {
+  color: #fff;
+}
+
+.StudentProfile-BeltItem.current span {
+  display: block;
+  font-size: 13px;
+  color: #666;
+  margin-top: 2px;
+  font-weight: 500;
+}
+
+.StudentProfile-BeltItem.locked h4 {
+  color: #555;
+}
+
+/* Verified Student Section Styles */
+.StudentProfile-VerifiedCard {
+  background: linear-gradient(135deg, oklch(37.9% .146 265.522 / 0.4), #59168b66);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.StudentProfile-VerifiedContent {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  text-align: left;
+}
+
+.StudentProfile-ShieldIcon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.StudentProfile-VerifiedInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.StudentProfile-VerifiedTitle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.StudentProfile-VerifiedTitle h3 {
+  font-size: 18px;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.5px;
+}
+
+/* Activity Grid Styles */
+.StudentProfile-ActivityGrid {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  padding: 20px 16px;
+  overflow-x: auto;
+}
+
+.StudentProfile-ActivityBlock {
+  background: #111;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 6px 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 52px;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+
+.StudentProfile-ActivityBlock:hover {
+  background: rgba(255, 74, 23, 0.05);
+  border-color: rgba(255, 74, 23, 0.2);
+  transform: translateY(-2px);
+}
+
+.StudentProfile-ActivityNum {
+  font-size: 16px;
+  font-weight: 900;
+  color: #ff4a17;
+}
+
+.StudentProfile-ActivityLabel {
+  font-size: 7.5px;
+  font-weight: 800;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 1px;
 }
